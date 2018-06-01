@@ -15,16 +15,6 @@
 ;;create closure - use for lambda and letrec cases
 (struct closure (vars body (envio #:mutable)))
 
-(define add
-  (lambda (a b)
-    (cond ((and (number? a) (number? b)) (+ a b))
-          ((and (list? a) (list? b)) (append a b))
-          (else (error "unable to add" a b)))))
-
-(define e1 (map cons
-                '(x y z + - * cons car cdr nil = equal? < else  add list)
-                (list 2 4 6 + - * cons car cdr '() = equal? < #t    add list)))
-
 (define lookup
   (lambda (symbo env)
     ;;base case: if env is empty or not a symbol
